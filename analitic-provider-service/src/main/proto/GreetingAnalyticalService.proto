@@ -1,0 +1,18 @@
+syntax = "proto3";
+package org.example.grpc;
+
+message HelloRequestAnalytic{
+  string msg = 1;
+}
+
+message HelloResponseAnalytic{
+  repeated string requests = 1;
+  repeated string operations = 2;
+  repeated string dates = 3;
+  repeated string providers = 4;
+  repeated string prices = 5;
+}
+
+service GreetingAnalyticalService{
+  rpc greeting(HelloRequestAnalytic) returns(HelloResponseAnalytic);
+}
