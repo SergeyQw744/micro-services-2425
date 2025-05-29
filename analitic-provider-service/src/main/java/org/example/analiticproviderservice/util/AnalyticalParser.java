@@ -58,7 +58,7 @@ public class AnalyticalParser {
             return prices;
         } else {
             return pricesStrings.stream()
-                    .map(price -> Double.parseDouble(price))
+                    .map(Double::parseDouble)
                     .toList();
         }
 

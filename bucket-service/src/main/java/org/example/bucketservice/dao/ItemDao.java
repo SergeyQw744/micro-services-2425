@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.PreparedStatement;
 import java.util.List;
+import java.util.Objects;
 
 @Component
 public class ItemDao {
@@ -43,7 +44,7 @@ public class ItemDao {
             statement.setString(4, code);
             return statement;
         }, keyHolder);
-        Integer generatedId = keyHolder.getKey().intValue();
+        int generatedId = Objects.requireNonNull(keyHolder.getKey()).intValue();
         item.setId(generatedId);
         item.setCode(code);
         return item;

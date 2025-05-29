@@ -37,23 +37,24 @@ public class ReportService {
                         getOperationPercent(analyticalParser.parseOperationsToStrings(data.get(1)))
                 )
                 .build();
+
     }
 
 
 
     private RequestPercent getRequestPercent(List<String> requests){
         return new RequestPercent(
-                (double) requestCount(requests, "POST")/requests.size()*100,
-                (double) requestCount(requests, "GET")/requests.size()*100,
-                (double) requestCount(requests, "DELETE")/requests.size()*100
+                (double) analyticCalculatorService.requestCount(requests, "POST")/requests.size()*100,
+                (double) analyticCalculatorService.requestCount(requests, "GET")/requests.size()*100,
+                (double) analyticCalculatorService.requestCount(requests, "DELETE")/requests.size()*100
                 );
     }
 
     private OperationPercent getOperationPercent(List<String> operations){
         return new OperationPercent(
-                (double) operationCount(operations, "SAVE")/operations.size()*100,
-                (double) operationCount(operations, "FIND_ALL")/operations.size()*100,
-                (double) operationCount(operations, "DELETE")/operations.size()*100
+                (double) analyticCalculatorService.operationCount(operations, "SAVE")/operations.size()*100,
+                (double) analyticCalculatorService.operationCount(operations, "FIND_ALL")/operations.size()*100,
+                (double) analyticCalculatorService.operationCount(operations, "DELETE")/operations.size()*100
         );
     }
 
